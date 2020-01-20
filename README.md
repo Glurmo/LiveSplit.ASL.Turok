@@ -10,7 +10,7 @@ Auto-start, auto-reset, splitting level entrances, splitting compaigner death, a
 
 Needs 46 splits. [Download split template here](https://raw.githubusercontent.com/Glurmo/LiveSplit.ASL.Turok/master/turok-detailed-subsplits.lss)
 
-For sub splits to work properly you need to use the "List -> Subsplits" component in your LiveSplit layout 
+**note:** For sub splits to work properly you need to use the "List -> Subsplits" component in your LiveSplit layout 
 
 ![detailed](img/config-detailed.png)
 ![detailed](img/ls-detailed.png)
