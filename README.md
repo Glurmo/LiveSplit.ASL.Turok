@@ -12,8 +12,8 @@ Needs 46 splits. [Download split template here](https://raw.githubusercontent.co
 
 **note:** For sub splits to work properly you need to use the "List -> Subsplits" component in your LiveSplit layout 
 
-![detailed](img/config-detailed.png)
-![detailed](img/ls-detailed.png)
+<img src="img/config-detailed.png" width="500">
+<img src="img/ls-detailed.png" width="190">
 
 ---
 
@@ -21,8 +21,8 @@ Needs 46 splits. [Download split template here](https://raw.githubusercontent.co
 
 Needs 12 splits, one for each level, one for each boss. [Download split template here](https://raw.githubusercontent.com/Glurmo/LiveSplit.ASL.Turok/master/turok-levels-bosses.lss)
 
-![levels and bosses](img/config-levelsandbosses.png)
-![levels and bosses](img/ls-levelsandbosses.png)
+<img src="img/config-levelsandbosses.png" width="500">
+<img src="img/ls-levelsandbosses.png" width="190">
 
 --- 
 
@@ -30,5 +30,5 @@ Needs 12 splits, one for each level, one for each boss. [Download split template
 
 Needs 8 splits, one for each level. [Download split template here](https://raw.githubusercontent.com/Glurmo/LiveSplit.ASL.Turok/master/turok-levels.lss)
 
-![levels only](img/config-levelsonly.png)
-![levels only](img/ls-levelsonly.png)
+<img src="img/config-levelsonly.png" width="500">
+<img src="img/ls-levelsonly.png" width="190">
