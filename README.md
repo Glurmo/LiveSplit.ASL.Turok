@@ -26,13 +26,9 @@ Needs 12 splits, one for each level, one for each boss. [Download split template
 
 --- 
 
-### Split Scheme - Levels Only
+### Split Scheme - Levels Only (default)
 
 Needs 8 splits, one for each level. [Download split template here](https://raw.githubusercontent.com/Glurmo/LiveSplit.ASL.Turok/master/turok-levels.lss)
 
 ![levels only](img/config-levelsonly.png)
 ![levels only](img/ls-levelsonly.png)
-
----
-
-If you have any questions you can PM me (glurmo#5946) on the Turok Discord; https://discord.gg/rcbPkSQ
