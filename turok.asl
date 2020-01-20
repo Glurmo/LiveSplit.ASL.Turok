@@ -47,7 +47,7 @@ start
     if (settings["split-thunder"]) vars.trackMap("levels/level24.map", "levels/level03.map", 1);
     if (settings["split-campaigner"]) vars.trackMap("levels/level25.map", "levels/level00.map", 1);
 
-    if (settings["split-warps-anyp"])
+    if (settings["split-warps-anyp"] && timer.Run.CategoryName.ToLower().Contains("any%"))
     {
         // level 1
         vars.trackWarp(10201, 1);
