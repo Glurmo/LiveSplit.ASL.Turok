@@ -18,6 +18,18 @@ state("sobek", "1.4.3")
     // 0x27DA60 / 0x27DA64 = last checkpoint (int id / int map)
 }
 
+// download_depot 405820 405822 8016018477641840845
+// download_depot 405820 405821 5590148811806510379
+state("sobek", "1.4.6") 
+{
+    string40 level: 0x286E7C, 0x0, 0x0;
+    string40 map: 0x286E58, 0x0;
+    int health: 0x287154, 0xE0;
+    int level8BossHealth: 0x2872F0, 0xE0;
+    int warpId: 0x287684;
+    int levelKeysRemaining: 0x286E7C, 0x40;
+}
+
 // current patch (2018-06-21 release)
 state("sobek", "2.0")
 {
@@ -35,6 +47,7 @@ start
     vars.mapsVisited.Clear();
     vars.warpSplits.Clear();
     vars.warpsVisited.Clear();
+    
     vars.trackMap("the hub", "the ancient city", 1);
     vars.trackMap("the hub", "the jungle", 1);
     vars.trackMap("the hub", "the ruins", 1);
@@ -42,6 +55,7 @@ start
     vars.trackMap("the hub", "the treetop village", 1);
     vars.trackMap("the hub", "the lost land", 1);
     vars.trackMap("the hub", "the final confrontation", 1);
+
     if (settings["split-longhunter"]) vars.trackMap("levels/level09.map", "levels/level48.map", 1);
     if (settings["split-mantis"]) vars.trackMap("levels/level12.map", "levels/level49.map", 1);
     if (settings["split-thunder"]) vars.trackMap("levels/level24.map", "levels/level03.map", 1);
@@ -125,7 +139,9 @@ split
 init
 {
     int memSize = modules.First().ModuleMemorySize;
-    version = memSize == 3047424 ? "1.4.3" : "2.0";
+    version = "2.0";
+    if (memSize == 0x2E8000) version = "1.4.3";
+    else if (memSize == 0x2F4000) version = "1.4.6";
 }
 
 startup 
