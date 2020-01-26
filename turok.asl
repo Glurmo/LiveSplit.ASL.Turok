@@ -63,57 +63,21 @@ start
 
     if (settings["split-warps-anyp"] && timer.Run.CategoryName.ToLower().Contains("any%"))
     {
-        // level 1
-        vars.trackWarp(10201, 1);
-        vars.trackWarp(10207, 1);
-        vars.trackWarp(10203, 1);
-        vars.trackWarp(10205, 1);
-        vars.trackWarp(10206, 1);
-        vars.trackWarp(10208, 1);
-        vars.trackWarp(10209, 1);
-        vars.trackWarp(10210, 1);
-        vars.trackWarp(10211, 1);
-
-        // level 3
-        vars.trackWarp(12041, 1);
-        vars.trackWarp(12768, 1);
+        // Todo: Pick route based on split count
+        vars.trackFirstWarps(new[] 
+        {
+            10201, 10207, 10203, 10205, 10206, 10208, 10209, 10210, 10211, // Hub Ruins
+            12041, 12768, 12766, 12045, // Ancient City
+            11126, // Jungle
+            13735, 13313, 13450, 13731, 13734, // Ruins
+            14567, 14569, // Catacombs
+            15436, 15006, 15004, // Treetop Village
+            17301, 17304, 17900, 17634, 17501, // Lost Land (Don't split menuing warp)
+            18644, 18645, 18648 // Final Confrontation
+        });
+        // Extras (2nd roof warp in lvl 3, lvl 4 re-entry)
         vars.trackWarp(12041, 2);
-        vars.trackWarp(12766, 1);
-        vars.trackWarp(12045, 1);
-        
-        // level 2
-        vars.trackWarp(11126, 1);
-
-        // level 4
-        vars.trackWarp(13735, 1);
-        vars.trackWarp(13313, 1);
-        vars.trackWarp(13450, 1);
         vars.trackMap("the hub", "the ruins", 2);
-        vars.trackWarp(13731, 1);
-        vars.trackWarp(13734, 1);
-
-        // level 5
-        vars.trackWarp(14567, 1);
-        vars.trackWarp(14569, 1);
-
-        // level 6
-        vars.trackWarp(15436, 1);
-        vars.trackWarp(15006, 1);
-        vars.trackWarp(15004, 1);
-        
-        // level 7
-        vars.trackWarp(17301, 1);
-        vars.trackWarp(17304, 1);
-        vars.trackWarp(17900, 1);
-        // Don't split save/load menuing
-        vars.trackWarp(17634, 1);
-        vars.trackWarp(17501, 1);
-        
-        // level 8
-        vars.trackWarp(18644, 1);
-        vars.trackWarp(18645, 1);
-        vars.trackWarp(18648, 1);
-        // 18998 = thunder to hallway
     }
 
     return old.level == "title" && current.level == "the hub";
@@ -128,7 +92,9 @@ split
 {
     bool isLevelSplit = vars.isMapSplit(old.level, current.level);
     bool isMapSplit = vars.isMapSplit(old.map, current.map);
-    bool isWarpSplit = settings["split-warps-anyp"] && old.warpId == -1 && current.warpId != -1 && vars.isWarpSplit(current.warpId, current.levelKeysRemaining);
+    bool isWarpSplit = settings["split-warps-anyp"] && 
+                       old.warpId == -1 && current.warpId != -1 && 
+                       vars.isWarpSplit(current.warpId, current.levelKeysRemaining);
     bool isFinalSplit = current.health > 0 && current.health <= 250 && // don't split if we died
                         (old.level8BossHealth > 0 && current.level8BossHealth == 0) &&
                         current.map == "levels/level00.map";
@@ -158,6 +124,7 @@ startup
     settings.Add("split-campaigner", false, "Campaigner", "split-boss");
     settings.Add("subsplits", false, "Warp Subsplits");
     settings.Add("split-warps-anyp", false, "Split Blue Planes (Any% Route)", "subsplits");
+    settings.SetToolTip("split-warps-anyp", "Split Blue Planes for the Any% route");
     settings.Add("misc", true, "Misc");
     settings.Add("reset-title", true, "Reset on Titlescreen", "misc");
     settings.SetToolTip("reset-title", "Disable this if you don't want the timer to reset if you game over");
@@ -188,6 +155,11 @@ startup
     {
         if (!vars.warpSplits.ContainsKey(warpId)) vars.warpSplits[warpId] = new List<int>();
         vars.warpSplits[warpId].Add(visit);
+    });
+
+    vars.trackFirstWarps = (Action<int[]>)((warpIds) => 
+    {
+        foreach (var warpId in warpIds) vars.trackWarp(warpId, 1);
     });
 
     vars.isWarpSplit = (Func<int, int, bool>)((warpId, keysRemaining) => 
