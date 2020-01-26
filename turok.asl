@@ -63,21 +63,46 @@ start
 
     if (settings["split-warps-anyp"] && timer.Run.CategoryName.ToLower().Contains("any%"))
     {
-        // Todo: Pick route based on split count
-        vars.trackFirstWarps(new[] 
+        int splitCount = timer.Run.Count();
+        if (splitCount == 46)
         {
-            10201, 10207, 10203, 10205, 10206, 10208, 10209, 10210, 10211, // Hub Ruins
-            12041, 12768, 12766, 12045, // Ancient City
-            11126, // Jungle
-            13735, 13313, 13450, 13731, 13734, // Ruins
-            14567, 14569, // Catacombs
-            15436, 15006, 15004, // Treetop Village
-            17301, 17304, 17900, 17634, 17501, // Lost Land (Don't split menuing warp)
-            18644, 18645, 18648 // Final Confrontation
-        });
-        // Extras (2nd roof warp in lvl 3, lvl 4 re-entry)
-        vars.trackWarp(12041, 2);
-        vars.trackMap("the hub", "the ruins", 2);
+            // 
+            // Original Route
+            //
+            vars.trackFirstWarps(new[] 
+            {
+                10201, 10207, 10203, 10205, 10206, 10208, 10209, 10210, 10211, // Hub Ruins
+                12041, 12768, 12766, 12045, // Ancient City
+                11126, // Jungle
+                13735, 13313, 13450, 13731, 13734, // Ruins
+                14567, 14569, // Catacombs
+                15436, 15006, 15004, // Treetop Village
+                17301, 17304, 17900, 17634, 17501, // Lost Land (Don't split menuing warp)
+                18644, 18645, 18648 // Final Confrontation
+            });
+            // Extras (2nd roof warp in lvl 3, lvl 4 re-entry)
+            vars.trackWarp(12041, 2);
+            vars.trackMap("the hub", "the ruins", 2);
+        }
+        else if (splitCount == 45)
+        {
+            // 
+            // Fusion Cannon Route
+            //
+            vars.trackFirstWarps(new[] 
+            {
+                10201, 10207, 10203, 10205, 10206, 10208, 10209, 10210, 10211, // Hub Ruins
+                12041, 12768, 12766, 12045, // Ancient City
+                11126, // Jungle
+                13731, 13734, 13735, 13313, 13450, // Ruins
+                14567, 14569, // Catacombs
+                15436, 15006, 15004, // Treetop Village
+                17301, 17304, 17900, 17634, 17501, // Lost Land 
+                18644, 18645, 18648 // Final Confrontation
+            });
+            // Extras (2nd roof warp in lvl 3)
+            vars.trackWarp(12041, 2);
+        }
     }
 
     return old.level == "title" && current.level == "the hub";
@@ -123,8 +148,8 @@ startup
     settings.Add("split-thunder", false, "Thunder", "split-boss");
     settings.Add("split-campaigner", false, "Campaigner", "split-boss");
     settings.Add("subsplits", false, "Warp Subsplits");
-    settings.Add("split-warps-anyp", false, "Split Blue Planes (Any% Route)", "subsplits");
-    settings.SetToolTip("split-warps-anyp", "Split Blue Planes for the Any% route");
+    settings.Add("split-warps-anyp", false, "Split Blue Planes (Any% Routes)", "subsplits");
+    settings.SetToolTip("split-warps-anyp", "Split Blue Planes for the Any% routes");
     settings.Add("misc", true, "Misc");
     settings.Add("reset-title", true, "Reset on Titlescreen", "misc");
     settings.SetToolTip("reset-title", "Disable this if you don't want the timer to reset if you game over");
