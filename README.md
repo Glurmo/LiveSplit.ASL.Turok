@@ -32,6 +32,4 @@ If you're doing the fusion cannon route move Mantis below Lost Land
 
 Needs 8 splits, one for each level. [Download split template here](https://raw.githubusercontent.com/Glurmo/LiveSplit.ASL.Turok/master/turok-levels.lss)
 
-If you're doing the fusion cannon route move Mantis below Lost Land
-
 <img src="img/ls-levelsonly.png" width="190"> <img src="img/config-levelsonly.png" width="500">
