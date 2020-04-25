@@ -1,5 +1,5 @@
 // Auto-start, reset, and split upon entering each level (and optionally each boss)
-// Supports steam version, patch 1.4.3 and 2.0. 
+// Supports steam version, patches 1.4.3, 1.4.6 and 2.0. 
 
 // Fastest/last patch with jeep backstab (2015-12-18 release)
 // inside "TDH 1.1.7z" on speedrun.com or steam (steam://nav/console):
